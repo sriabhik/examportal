@@ -22,28 +22,30 @@ public class ExamserverApplication implements CommandLineRunner {
 		SpringApplication.run(ExamserverApplication.class, args);
 	}
 
+
+	//this is to use console to put data in db
 	@Override
 	public void run(String... args) throws Exception{
-		User user = new User();
-
-		user.setFirstName("Abhishek");
-		user.setLastName("Srivastava");
-		user.setPassword("abhi@123");
-		user.setEmail("abhi@gamil.com");
-		user.setProfile("default.png");
-
-		Role role1 = new Role();
-		role1.setRoleId(44L);
-		role1.setRoleName("ADMIN");
-
-		Set<UserRole> userRoleSet = new HashSet<>();
-		UserRole userRole = new UserRole();
-
-		userRole.setRole(role1);
-		userRole.setUser(user);
-		userRoleSet.add(userRole);
-
-		User user1 = this.userService.createUser(user,userRoleSet);
-		System.out.println(user.getUsername());
+//		User user = new User();
+//
+//		user.setFirstname("Abhishek");
+//		user.setLastname("Srivastava");
+//		user.setPassword("abhi@123");
+//		user.setEmail("abhi@gamil.com");
+//		user.setProfile("default.png");
+//		user.setUsername("abhi123@");
+//		Role role1 = new Role();
+//		role1.setRoleId(44L);
+//		role1.setRoleName("ADMIN");
+//
+//		Set<UserRole> userRoleSet = new HashSet<>();
+//		UserRole userRole = new UserRole();
+//
+//		userRole.setRole(role1);
+//		userRole.setUser(user);
+//		userRoleSet.add(userRole);
+//
+//		User user1 = this.userService.createUser(user,userRoleSet);
+//		System.out.println(user.getUsername());
 	}
 }
