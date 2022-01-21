@@ -1,6 +1,7 @@
 package com.exam.controller;
 
 import com.exam.model.exam.Quiz;
+import com.exam.service.QuestionService;
 import com.exam.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/quiz")
 public class QuizController {
 
+    @Autowired
+    private QuestionService questionService;
     @Autowired
     private QuizService quizService;
 
@@ -35,13 +38,14 @@ public class QuizController {
 
     //single quiz
     @GetMapping("/{quizId}")
-    public ResponseEntity<?>quiz(@PathVariable("quizId") Long quizId){
+    public ResponseEntity<?> quiz(@PathVariable("quizId") Long quizId){
         return ResponseEntity.ok(this.quizService.getQuiz(quizId));
     }
 
     //delete
     @DeleteMapping("/{quizId}")
     public void delete(@PathVariable("quizId") Long quizId){
+
         this.quizService.deleteQuiz(quizId);
     }
 

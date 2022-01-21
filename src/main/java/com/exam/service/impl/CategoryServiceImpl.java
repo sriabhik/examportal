@@ -38,6 +38,6 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteCategory(Long categoryId) {
        Category category = new Category();
        category.setCid(categoryId);
-        this.categoryRepository.delete(category);
+       this.categoryRepository.delete(category);
     }
 }

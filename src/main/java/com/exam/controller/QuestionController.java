@@ -30,12 +30,12 @@ public class QuestionController {
     //update
     @PutMapping("/")
     public ResponseEntity<Question>update(@RequestBody Question question){
-        return ResponseEntity.ok(this.questionService.addQuestion(question));
+        return ResponseEntity.ok(this.questionService.updateQuestion(question));
     }
 
     //get all question of any qid
     @GetMapping("/quiz/{qid}")
-    public ResponseEntity<?> getQuestionOFQUiz(@PathVariable("qid") Long qid){
+    public ResponseEntity<?> getQuestionOfQuiz(@PathVariable("qid") Long qid){
         Quiz quiz = this.quizService.getQuiz(qid);
         Set<Question> questions = quiz.getQuestions();
         List list = new ArrayList(questions);
@@ -44,6 +44,16 @@ public class QuestionController {
         }
         Collections.shuffle(list);
         return ResponseEntity.ok(list);
+    }
+    //Admin
+
+   
+    @GetMapping("/quiz/all/{qid}")
+    public ResponseEntity<?> getQuestionOfQuizAdmin(@PathVariable("qid") Long qid){
+        Quiz quiz = new Quiz();
+        quiz.setQid(qid);
+        Set<Question> QuestionsOfQuiz = this.questionService.getQuestionOfQuiz(quiz);
+        return ResponseEntity.ok(QuestionsOfQuiz);
     }
 
     //get single question

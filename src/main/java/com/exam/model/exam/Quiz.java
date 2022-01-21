@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 
-public class Quiz {
+public class Quiz{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long qid;

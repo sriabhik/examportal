@@ -15,8 +15,8 @@ public class Category {
     private String title;
     @Column(length = 1000)
     private String description;
-
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//fetch = FetchType.EAGER, this is replace in belwo code because of mapping issue
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Quiz> set = new LinkedHashSet<>();
 
