@@ -3,9 +3,12 @@ package com.exam.controller;
 import com.exam.model.exam.Quiz;
 import com.exam.service.QuestionService;
 import com.exam.service.QuizService;
+import com.exam.model.exam.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -30,7 +33,6 @@ public class QuizController {
     }
 
     //get quiz
-
     @GetMapping("/")
     public ResponseEntity<?>quizzes(){
         return ResponseEntity.ok(this.quizService.getQuizzes());
@@ -49,4 +51,10 @@ public class QuizController {
         this.quizService.deleteQuiz(quizId);
     }
 
+    @GetMapping("/category/{cid}")
+    public List<Quiz> getQuizzesOfCategory(@PathVariable("cid") Long cid){
+        Category category = new Category();
+        category.setCid(cid);
+        return this.quizService.getQuizzesOfCategory(category);
+    }
 }

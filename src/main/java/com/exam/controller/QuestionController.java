@@ -46,8 +46,6 @@ public class QuestionController {
         return ResponseEntity.ok(list);
     }
     //Admin
-
-   
     @GetMapping("/quiz/all/{qid}")
     public ResponseEntity<?> getQuestionOfQuizAdmin(@PathVariable("qid") Long qid){
         Quiz quiz = new Quiz();
